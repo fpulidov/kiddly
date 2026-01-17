@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiddly - El recordatorio que los padres necesitan</title>
+    <meta name="description" content="Deja de olvidar las pequeñas cosas del día a día con tus hijos. Kiddly recuerda por ti.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Kiddly - El recordatorio que los padres necesitan">
+    <meta property="og:description" content="¿Cuándo cortaste las uñas a tu hijo por última vez?">
+    <meta property="og:type" content="website">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cream: #FFF9F0;
+            --terracotta: #D4745F;
+            --sage: #8B9A7C;
+            --charcoal: #2A2A2A;
+            --soft-white: #FEFEFE;
+            --warm-shadow: rgba(212, 116, 95, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--terracotta);
+            letter-spacing: -0.02em;
+        }
+        
+        .beta-badge {
+            background: var(--sage);
+            color: var(--soft-white);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 5% 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--charcoal);
+            letter-spacing: -0.03em;
+        }
+        
+        .hero-content .highlight {
+            color: var(--terracotta);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-content .subheadline {
+            font-size: 1.35rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+            color: #555;
+            max-width: 540px;
+        }
+        
+        /* Form Section */
+        .hero-form {
+            background: var(--soft-white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px var(--warm-shadow);
+            position: relative;
+        }
+        
+        .form-header {
+            margin-bottom: 2rem;
+        }
+        
+        .form-header h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+        
+        .form-header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: 2px solid #E8E8E8;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--cream);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            background: var(--soft-white);
+        }
+        
+        .checkbox-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.6rem;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.6rem;
+            cursor: pointer;
+            accent-color: var(--terracotta);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1.1rem;
+            background: var(--terracotta);
+            color: var(--soft-white);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(212, 116, 95, 0.3);
+        }
+        
+        .submit-btn:hover {
+            background: #C26550;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(212, 116, 95, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .privacy-note {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #888;
+            text-align: center;
+        }
+        
+        /* Problem Section */
+        .problem-section {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .problem-section h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.3;
+        }
+        
+        .problem-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+        
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .task-card {
+            background: rgba(255, 249, 240, 0.08);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 249, 240, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .task-card:hover {
+            background: rgba(255, 249, 240, 0.12);
+            transform: translateY(-4px);
+        }
+        
+        .task-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .task-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--cream);
+        }
+        
+        .task-card p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin: 0;
+        }
+        
+        /* How It Works */
+        .how-section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .how-section h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--charcoal);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--sage);
+            color: var(--soft-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            font-family: 'Crimson Pro', serif;
+        }
+        
+        .step h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+        
+        .step p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        /* CTA Final */
+        .final-cta {
+            background: linear-gradient(135deg, var(--terracotta), #E89580);
+            color: var(--soft-white);
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--soft-white);
+            color: var(--terracotta);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--cream);
+            padding: 2rem 5%;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: var(--sage);
+            color: var(--soft-white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            animation: slideIn 0.5s ease;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            .task-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content .subheadline {
+                font-size: 1.1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Kiddly</div>
+        <div class="beta-badge">BETA PRIVADA</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>¿Cuándo fue la última vez que <span class="highlight">cortaste las uñas</span> a tu hijo?</h1>
+            <p class="subheadline">
+                El mantenimiento del día a día no tiene fecha en el calendario. Por eso se olvida.
+                <strong>Kiddly recuerda por ti.</strong>
+            </p>
+        </div>
+        
+        <div class="hero-form">
+            <div class="success-message" id="successMessage">
+                <strong>✓ ¡Genial!</strong> Te hemos añadido a la lista. Te avisaremos en cuanto esté listo.
+            </div>
+            
+            <div class="form-header">
+                <h3>Únete a la beta privada</h3>
+                <p>Los primeros 100 usuarios tendrán acceso gratuito para siempre</p>
+            </div>
+            
+            <form id="waitlistForm">
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="children">¿Cuántos hijos tienes? *</label>
+                    <select id="children" name="children" required>
+                        <option value="">Selecciona...</option>
+                        <option value="1">1 hijo/a</option>
+                        <option value="2">2 hijos/as</option>
+                        <option value="3+">3 o más</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Edad del más pequeño *</label>
+                    <select id="age" name="age" required>
+                        <option value="">Selecciona...</option>
+                        <option value="0-1">0-1 año</option>
+                        <option value="1-3">1-3 años</option>
+                        <option value="3-6">3-6 años</option>
+                        <option value="6+">Más de 6 años</option>
+                    </select>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label>¿Qué olvidas más? (elige todas las que apliquen)</label>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="task1" name="tasks" value="nails">
+                        <label for="task1">Cortar uñas</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="task2" name="tasks" value="shoes">
+                        <label for="task2">Revisar talla de zapatos</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="task3" name="tasks" value="clothes">
+                        <label for="task3">Rotar ropa de estación</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="task4" name="tasks" value="backpack">
+                        <label for="task4">Revisar mochila</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="task5" name="tasks" value="medical">
+                        <label for="task5">Revisiones médicas</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="task6" name="tasks" value="other">
+                        <label for="task6">Otras tareas</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>¿Pagarías 3€/mes por esto?</label>
+                    <select id="willingness" name="willingness" required>
+                        <option value="">Selecciona...</option>
+                        <option value="yes">Sí, sin duda</option>
+                        <option value="maybe">Quizás, depende de las funciones</option>
+                        <option value="no">No, prefiero gratis</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-btn">Reservar mi acceso</button>
+                
+                <p class="privacy-note">
+                    No spam. Solo te avisaremos cuando esté listo.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <section class="problem-section">
+        <h2>No son las citas médicas. No son los cumpleaños.</h2>
+        <p>Son las 30 pequeñas cosas que haces cada semana y que nadie recuerda cuándo tocan.</p>
+        
+        <div class="task-grid">
+            <div class="task-card">
+                <div class="task-icon">✂️</div>
+                <h4>Cortar uñas</h4>
+                <p>Cada 10-14 días</p>
+            </div>
+            <div class="task-card">
+                <div class="task-icon">👟</div>
+                <h4>Revisar talla</h4>
+                <p>Cada 2-3 meses</p>
+            </div>
+            <div class="task-card">
+                <div class="task-icon">🧸</div>
+                <h4>Lavar juguetes</h4>
+                <p>Cada 2 semanas</p>
+            </div>
+            <div class="task-card">
+                <div class="task-icon">🪥</div>
+                <h4>Cambiar cepillo</h4>
+                <p>Cada 3 meses</p>
+            </div>
+            <div class="task-card">
+                <div class="task-icon">🎒</div>
+                <h4>Revisar mochila</h4>
+                <p>Semanalmente</p>
+            </div>
+            <div class="task-card">
+                <div class="task-icon">👕</div>
+                <h4>Rotar armario</h4>
+                <p>Cada estación</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section">
+        <h2>Cómo funciona</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Añades las tareas</h3>
+                <p>Elige de nuestra biblioteca o crea las tuyas. Cada tarea tiene una frecuencia personalizable.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Marcas "hecho"</h3>
+                <p>Cuando completas una tarea, simplemente márcala. Sin fechas, sin complicaciones.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Kiddly calcula</h3>
+                <p>Automáticamente programa la próxima vez según cuando lo hiciste la última vez.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>No más culpa por olvidar</h2>
+        <p>Únete a los primeros 100 y accede gratis para siempre</p>
+        <a href="#waitlistForm" class="cta-button">Reservar mi acceso ahora</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Kiddly. Hecho con ❤️ para padres que tienen demasiado en la cabeza.</p>
+    </footer>
+
+    <script>
+        // Form submission handling
+        document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                email: formData.get('email'),
+                children: formData.get('children'),
+                age: formData.get('age'),
+                tasks: formData.getAll('tasks'),
+                willingness: formData.get('willingness'),
+                timestamp: new Date().toISOString(),
+                source: 'landing_page'
+            };
+            
+            // Log to console (in production, send to your backend/Google Sheets/etc)
+            console.log('New signup:', data);
+            
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Hide form
+            this.style.display = 'none';
+            
+            // Optional: Send to Google Sheets, Airtable, or your backend
+            // Example with Google Apps Script:
+            /*
+            fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+                method: 'POST',
+                body: JSON.stringify(data)
+            });
+            */
+            
+            // Track conversion (add your Meta Pixel/GA here)
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead', {
+                    content_name: 'Kiddly Waitlist',
+                    value: 3.00,
+                    currency: 'EUR'
+                });
+            }
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'conversion', {
+                    'send_to': 'YOUR_CONVERSION_ID',
+                    'value': 3.00,
+                    'currency': 'EUR'
+                });
+            }
+        });
+        
+        // Smooth scroll for CTA button
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('waitlistForm').scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'center'
+            });
+            document.getElementById('email').focus();
+        });
+    </script>
+</body>
+</html>
